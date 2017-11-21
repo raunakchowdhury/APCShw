@@ -1,0 +1,27 @@
+public class Commafier{
+    public static String commifyR (int num){ //"commify" via recursion
+	String bert = ""; // necessary for returning a String
+	int lastThreeDigits = num % 1000; // get the last three digits
+	//System.out.println(lastThreeDigits); // for testing
+	if (0 <= num && num < 1000){
+	    return bert += num;
+	} else if ( lastThreeDigits == 0) {
+	    return bert += commifyR(num / 1000) + "," + "00" + lastThreeDigits; // if the lastthreeDigits has two leading zeroes
+	} else if (lastThreeDigits > 0 && lastThreeDigits < 100) {
+	    return bert += commifyR(num / 1000) + "," + "0" + lastThreeDigits; // deals with the exception in which the last three digits has a leading 0
+	} else {
+	    return bert += commifyR(num / 1000) + "," + lastThreeDigits; // if there are no leading zeroes in the last three digits, proceed as normal
+	}	    
+    }
+
+    
+	    
+	
+    public static void main ( String[] args ){
+	for ( String s : args){
+	    int num = Integer.parseInt(s);
+	    System.out.println(commifyR(num));
+    }
+
+    }
+}

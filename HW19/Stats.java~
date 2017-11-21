@@ -1,0 +1,207 @@
+// Raunak Chowdhury and Peter Cwalina
+// APCS1 pd2
+// HW #19 -- gcd 3 ways
+// 2017-10-18
+
+import java.lang.Math; 
+
+public class Stats{
+    public static int mean(int a, int b){ //Find the mean of two INTEGERS
+	// Pre-condition: take two integers a and b
+	// Post-condition: return the average of the two integers as an integer
+	return (a + b)/2;
+    }
+
+    public static double mean(double a, double b){ //Find the mean of two DECIMALS
+	// Pre-condition: take two doubles a and b
+	// Post-condition: return the average of the two doubles as a double
+	return (a + b)/2;
+    }
+
+    public static int max(int a, int b){ // Find the maximum of two INTEGERS
+	// Pre-condition: take two integers a and b
+	// Post-condition: return the larger integer
+	if (a > b){
+	    return a;
+	}
+	else{
+	    return b;
+	}
+    }
+
+    // Find the max of three ints
+    public static int max (int a, int b, int c){
+	// Pre-condition: takes ints a, b, c
+	// Post-condition: returns the max of the three ints
+	int maxab = max (a, b); //find the max of two of the ints
+	return max(maxab, c);
+    }
+	    
+
+    public static double max(double a, double b){ // Find the maximum of two DECIMALS
+	// Pre-condition: take two doubles a and b
+	// Post-condition: return the larger double
+	if (a > b){
+	    return a;
+	}
+	else{
+	    return b;
+	}
+       
+    }
+
+    public static double max ( double a, double b, double c){ // Find max of three doubles
+	// Pre-cond: take three doubles a, b, c
+	// Post-cond: find max of the three
+	double maxab = max (a, b); //find the max of two of the ints
+	return max(maxab, c);
+    }
+    
+    public static int geoMean(int a, int b){ // find the geometric mean of INTS
+	// Pre-condition: takes two ints a and b
+	// Post-condition: returns their geometric mean
+	return (int) Math.sqrt(a * b);
+    }
+
+    public static double geoMean(double a, double b){ // find the geometric mean of DECIMALS
+	// Pre-condition: takes two doubles a and b
+        // Post-condition: returns their geometric mean
+	return Math.sqrt(a * b);
+    }
+
+    public static int geoMean( int a, int b, int c){ // find geo mean of doubles a,b,c
+	// pre-cond: doubles a, b, c
+	double exponent = (1.0/3.0); //need to input decimals
+	return (int) Math.pow(a*b*c, exponent);
+    }
+
+
+    public static double geoMean( double a, double b, double c){ // find geo mean of doubles a,b,c
+	// pre-cond: doubles a, b, c
+	double exponent = (1.0/3.0); //need to input decimals
+    	//System.out.println(exponent); //This line helped me figure out why I kept getting "1" as the result of the geoMean
+	return Math.pow(a*b*c, exponent);
+    }
+
+    public static int gcd(int a, int b){
+	int min;
+	int counter = 1;
+	int gcd = 1;
+	int maxab = max (a,b);
+	if (maxab == a){ //find the smaller and larger int
+	    min = b;
+	}
+	else {
+	    min = a;
+	}
+	while (counter <= min) { // go up the numbers leading up to the smaller number, changing the gcd to the next highest CD
+	    if (maxab % counter == 0 && min % counter == 0){
+		gcd = counter;
+	    }
+	    counter += 1;
+	}
+	return gcd;
+    }
+
+    // Euclid's Algorithm first checks for whether or not one integer is divisble by the other. If this is true, then the divisor is the GCD. If not, then you take the positive difference of the two integers (bigger - smaller) and check to see if the difference is 0 -- if this is true, then either number is the GCD. If not, then the larger integer is replaced with the smaller integer, and the smaller integer is replaced with the positive difference. This is repeated until one of the above conditions is met. 
+
+    public static int gcdER ( int a ,int b){
+	int min;
+	int maxab = max (a,b);
+	int difference;
+	if (maxab == a){ // discern the smaller number and the larger number
+	    min = b;
+	}
+	else {
+	    min = a;
+	}
+
+	if (b % a == 0){ // is b divisible by a?
+	    return a;
+	}
+	else {
+	    difference = maxab - min; // find the difference between the two numbers
+	    if (difference == 0){ //if the numbers are the same, return one of the numbers as the GCD
+		return min;
+	    }
+	    else {
+		return gcdER(min, difference); // otherwise, replace the larger int with the smaller int, and the smaller int with the difference; try again
+	    }
+	}
+    }
+
+    public static int gcdEW(int a, int b){
+	int min;
+	int gcd = 1;
+	int maxab = max (a,b);
+	int difference; 
+	if (maxab == a){ // discern the smaller and larger numbers
+	    min = b;
+	}
+	else {
+	    min = a;
+	}
+	if (maxab % min == 0){ // is one divisible by the other?
+	    return min;
+	}
+	else   {
+	    while( maxab != 0 && min != 0){	
+		if (maxab % min == 0){ // does a divide b? 
+		    return  min; // if yes, report the min
+		}
+		else {
+		    difference = maxab - min; // if not, find the difference
+		    if (difference == 0){ // Are the numbers the same? Then the number is the GCD
+			return min;
+		    }
+		    else { // if all of the above fails, discard the larger #, take the smaller # and the diff and try again
+			maxab = min;
+			min = difference;
+		    } // end second else
+		} // end first else
+	    }// end loop
+	}// end third else
+	return gcd; //if all else fails
+    }
+    
+
+    public static void main(String[] args){
+	/*	// Print out the avg of an int
+		System.out.println("Testing mean...");
+		System.out.println(mean(5,4));
+	    
+		// Print out the avg of a non-int
+		System.out.println(mean(5.56, 4.00));
+
+		//Print out the max of ints/non-ints
+		System.out.println("Testing max...");
+		System.out.println(max(1,2));
+		System.out.println(max(5.56, 4.00));
+
+		//Print out the geometric mean of ints and non-ints
+		System.out.println("Testing geoMean...");
+		System.out.println(geoMean(16, 4));
+		System.out.println(geoMean(25, .4));*/
+
+	System.out.println("gcd method");
+	System.out.println (gcd (15,20)); //5
+	System.out.println (gcd (15,30)); //15
+	System.out.println (gcd(20,25)); //5
+	System.out.println (gcd(1,1)); //1
+
+	System.out.println("gcdER method");
+	System.out.println (gcdER (15,20)); //5
+	System.out.println (gcdER (15,30)); //15
+	System.out.println (gcdER (20,25)); //5
+	System.out.println (gcdER (1,1)); //1
+
+	System.out.println("gcdEW method");	
+	System.out.println (gcdEW (15,20)); //5
+	System.out.println (gcdEW (15,30)); //15
+	System.out.println (gcdEW (20,25)); //5
+	System.out.println (gcdEW (1,1)); //1
+	
+    }//End main
+}//End stats
+
+

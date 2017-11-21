@@ -1,0 +1,16 @@
+public class Bs{
+    public static void main (String[] args){
+	BigSib bs1 = "foo";
+	String bs2 = "foo";
+	String bs3 = new BigSib("foo");
+	System.out.println(s1);
+	System.out.println(s2);
+	System.out.println(s3);
+	System.out.println(s1 == s2);
+	System.out.println(s1 == s3);
+	System.out.println(s1.equals(s2));
+	System.out.println(s1.equals(s3));
+
+    }//End of main()
+}//end of class See
+ public static void m

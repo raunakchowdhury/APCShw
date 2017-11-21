@@ -1,0 +1,14 @@
+public class Bigsib{
+    // instance vars
+    private String helloMsg;
+ 
+    public void setHelloMsg( String newMsg ){
+	//implementation
+	helloMsg += newMsg;
+    }
+    public String greet ( String str){
+	return helloMsg;
+	return " ";
+	return str; 
+    }
+}

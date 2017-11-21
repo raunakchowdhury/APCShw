@@ -1,0 +1,40 @@
+/* Raunak Chowdhury
+APCS1 pd2
+HW 03 -- Howdy, <VeryInterestingPerson>!
+2017-09-17 */
+
+import java.util.Random;
+
+public class Greet{
+    
+    public static void main (String[] args){
+	greet();
+    }
+    
+    static void greet(){
+      	/*Generates a hardcoded name randomly*/
+	Random instance = new Random(); 
+	int randomNumber = instance.nextInt(3);
+	
+	String name = "";
+	if (randomNumber == 0){
+	     name = "Dylan";
+	} else if (randomNumber == 1){
+	     name = "Bert";
+	} else {
+	     name = "Hilda";
+	} 
+	
+	System.out.println("No hablo queso, " + name);
+    }	
+}
+
+
+/* 
+Credits to where they are due:
+- Alvin Ye's shared video on the creation of functions in Java
+- Rubin Peci's tutorial on the random class
+- Ahnaf Hasan's explanation of the homework, and an introduction to conditionals in Java
+*/
+
+

@@ -1,0 +1,38 @@
+public class Protagonist{
+    private String name;
+    private int health;
+    private int defense;
+    private int strength;
+    private double attack;
+
+    public Protagonist(){
+	name = "Max";
+	health = 100;
+	attack = 10;
+	defense = 0;
+	strength = 2;
+    }
+
+    public Protagonist( String entName){
+	name = entName;
+    }
+
+    public boolean isAlive(){
+	return health > 0;
+    }
+
+    public int getDefense(){
+	return defense;
+    }
+
+    public String getName(){
+	return name;
+    }
+
+    public static void main( String[] args ){
+	Protagonist knight = new Protagonist ("Etheros");
+	System.out.println( "Your name is: " + knight.getName() );
+	System.out.println( "Your def is: " + knight.getDefense() );
+	System.out.println( "Your knight is: " + knight.isAlive() );
+    }
+}

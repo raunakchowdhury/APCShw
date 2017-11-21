@@ -1,0 +1,9 @@
+public class Foo{
+    public static forEach ( String s ){
+    {
+	for (String s : args){
+	    System.out.println(args);
+	}
+    public static void main ( String[] args ){
+    }
+}

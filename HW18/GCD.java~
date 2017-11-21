@@ -1,0 +1,10 @@
+public class GCD{
+    public static int rGCD ( int a, int b){ // Does a recursive algorithm of GCD
+	if (a % b == 0){
+	    return b;
+	}
+	else {
+	    return rGCD( b, a%b);
+	}
+
+    } // end class GCD
