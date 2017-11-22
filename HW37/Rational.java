@@ -82,15 +82,12 @@ public void subtract (Rational r){
             -1 if the calling Rational < param
    ============================================*/
 public int compareTo( Rational r ){
-        double value = floatValue();
-        double value2 = r.floatValue();
-        if ( value == value2 ) {
-                return 0;
-        }
-        else if( value > value2 ) {
-                return 1;
-        }
-        return -1;
+        int thisNum, otherNum;
+
+        thisNum = this.p * r.q;
+        otherNum = r.p * this.q;
+
+        return thisNum - otherNum;
 } // end compareTo
 
 public static void main(String[] args) {
