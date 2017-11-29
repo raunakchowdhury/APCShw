@@ -1,3 +1,8 @@
+//Raunak Chowdhury
+//APCS1 pd2
+//HW41 -- Array of Steel
+//2017-10-14
+
 /***************************
 * class SuperArray
 * Wrapper class for array. Facilitates resizing,
