@@ -181,6 +181,47 @@ public static void main( String[] args )
         System.out.println("Printing SuperArray mayfield after set...");
         System.out.println(mayfield);
 
+//create a new instance of SuperArray, as remove() and overloaded add() are not in List
+        SuperArray wen = new SuperArray();
+        if (wen.add(5) ) {
+                System.out.println("Value 5 added!");
+        }
+        if (wen.add("bob") ) {
+                System.out.println("String bob added!");
+        }
+        if (wen.add(3) ) {
+                System.out.println("Value 3 added!");
+        }
+        if (wen.add(2) ) {
+                System.out.println("Value 2 added!");
+        }
+        if (wen.add(1) ) {
+                System.out.println("Value 1 added!");
+        }
+
+        System.out.println("\nPrinting new array wen...");
+        System.out.println(wen);
+
+        System.out.println("\nTesting remove...");
+        System.out.println("Removed value " + wen.remove(0) );
+        System.out.println("Removed value " + wen.remove(2) );
+        // erronous values
+        //System.out.println( wen.remove(-1) );
+        //System.out.println( wen.remove(99) );
+
+        System.out.println("Printing new SuperArray wen with values removed...");
+        System.out.println(wen);
+
+        System.out.println("\nTesting overloaded add...");
+        wen.add(1, "shark");
+        wen.add(3, "crab");
+
+        //erronous values
+        //wen.add(-1, "food");
+        //wen.add(45, "mixcoatl");
+        System.out.println("Printing new SuperArray wen with values added...");
+        System.out.println(wen);
+
         /*~~~~~~~~move~me~down~~~~~~~~~~~~~~V~~~~~~~~
            // we can report the value removed, since remove returns the removed value
            System.out.println("Value removed: " + mayfield.remove(3));
