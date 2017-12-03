@@ -18,17 +18,17 @@
 * ListInt interface. (ListInt.java must be in same dir as this file)
 ***************************/
 
-public class SuperArray implements ListInt
+public class SuperArray implements List
 {
 
-private int[] _data;    //underlying container
+private java.lang.Object[] _data; //underlying container
 private int _size;      //number of elements in this SuperArray
-
+private Boolean addSwitch; //used for determning whether the index came from add or from the user
 
 //default constructor – initializes 10-item array
 public SuperArray()
 {
-        _data = new int[10];
+        _data = new java.lang.Object[10];
         _size = 0;
 }
 
@@ -51,7 +51,7 @@ public String toString()
 //double capacity of SuperArray
 private void expand()
 {
-        int[] temp = new int[ _data.length * 2 ];
+        java.lang.Object[] temp = new java.lang.Object[ _data.length * 2 ];
         for( int i = 0; i < _data.length; i++ )
                 temp[i] = _data[i];
         _data = temp;
@@ -59,49 +59,57 @@ private void expand()
 
 
 //accessor -- return value at specified index
-public int get( int index )
+public java.lang.Object get( int index )
 {
         return _data[index];
 }
 
 
-//mutator -- set value at index to newVal,
+//mutator -- set value at index to o,
 //           return old value at index
-public int set( int index, int newVal )
+public java.lang.Object set( int index, java.lang.Object o )
 {
-        int temp = _data[index];
-        _data[index] = newVal;
+        java.lang.Object temp = _data[index];
+        _data[index] = o;
         return temp;
 }
 
 
 //adds an item after the last item
-public boolean add( int newVal )
+public boolean add( java.lang.Object o )
 {
-        add( _size, newVal );
+        addSwitch = true; // "notifies" the overloaded add that the input is from this method
+        add( _size, o );
+        addSwitch = false; //sets it to false to guard against inappropriate user input
         return true;
 }
 
 
 //inserts an item at index
-public void add( int index, int newVal )
+public void add( int index, java.lang.Object o )
 {
+
+        // deal with indices that are outside of the array range
+        // deal with the case of adding the very first element to the array
+        if (  !addSwitch && (index < 0 || index >= size()) ) {
+                throw new IndexOutOfBoundsException( "Element " + index + " is not in the array!");
+        }
         //first expand if necessary
         if ( _size >= _data.length )
                 expand();
         for( int i = _size; i > index; i-- ) {
                 _data[i] = _data[i-1]; //each slot gets value of left neighbor
         }
-        _data[index] = newVal;
+        _data[index] = o;
         _size++;
 }
 
 
 //removes the item at index
 //shifts elements left to fill in newly-empted slot
-public int remove( int index )
+public java.lang.Object remove( int index )
 {
-        int removedVal = _data[index];
+        java.lang.Object removedVal = _data[index];
         for( int i = index; i < _size - 1; i++ ) {
                 _data[i] = _data[i+1];
         }
@@ -123,7 +131,7 @@ public int size()
 public static void main( String[] args )
 {
 
-        ListInt mayfield = new SuperArray();
+        List mayfield = new SuperArray();
         System.out.println("Printing empty SuperArray mayfield...");
         System.out.println(mayfield);
 
@@ -131,8 +139,8 @@ public static void main( String[] args )
         if (mayfield.add(5) ) {
                 System.out.println("Value 5 added!");
         }
-        if (mayfield.add(4) ) {
-                System.out.println("Value 4 added!");
+        if (mayfield.add("bob") ) {
+                System.out.println("String bob added!");
         }
         if (mayfield.add(3) ) {
                 System.out.println("Value 3 added!");
@@ -147,25 +155,26 @@ public static void main( String[] args )
         System.out.println("Printing populated SuperArray mayfield...");
         System.out.println(mayfield);
 
-// we can report the value removed, since remove returns the removed value
-        System.out.println("Value removed: " + mayfield.remove(3));
-        System.out.println("Printing SuperArray mayfield post-remove...");
-        System.out.println(mayfield);
-
-        System.out.println("Value removed: " + mayfield.remove(3));
-        System.out.println("Printing SuperArray mayfield post-remove...");
-        System.out.println(mayfield);
-
-        mayfield.add(3,99);
-        System.out.println("Printing SuperArray mayfield post-insert...");
-        System.out.println(mayfield);
-        mayfield.add(2,88);
-        System.out.println("Printing SuperArray mayfield post-insert...");
-        System.out.println(mayfield);
-        mayfield.add(1,77);
-        System.out.println("Printing SuperArray mayfield post-insert...");
-        System.out.println(mayfield);
         /*~~~~~~~~move~me~down~~~~~~~~~~~~~~V~~~~~~~~
+           // we can report the value removed, since remove returns the removed value
+           System.out.println("Value removed: " + mayfield.remove(3));
+           System.out.println("Printing SuperArray mayfield post-remove...");
+           System.out.println(mayfield);
+
+           System.out.println("Value removed: " + mayfield.remove(3));
+           System.out.println("Printing SuperArray mayfield post-remove...");
+           System.out.println(mayfield);
+
+           mayfield.add(3,99);
+           System.out.println("Printing SuperArray mayfield post-insert...");
+           System.out.println(mayfield);
+           mayfield.add(2,88);
+           System.out.println("Printing SuperArray mayfield post-insert...");
+           System.out.println(mayfield);
+           mayfield.add(1,77);
+           System.out.println("Printing SuperArray mayfield post-insert...");
+           System.out.println(mayfield);
+
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|~~~~~~~~*/
 }  //end main()
 
