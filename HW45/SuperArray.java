@@ -61,6 +61,9 @@ private void expand()
 //accessor -- return value at specified index
 public java.lang.Object get( int index )
 {
+        if (index < 0 || index >= size() ) {
+                throw new IndexOutOfBoundsException( "Element " + index + " is not in the array!");
+        }
         return _data[index];
 }
 
@@ -69,6 +72,9 @@ public java.lang.Object get( int index )
 //           return old value at index
 public java.lang.Object set( int index, java.lang.Object o )
 {
+        if (index < 0 || index >= size() ) {
+                throw new IndexOutOfBoundsException( "Element " + index + " is not in the array!");
+        }
         java.lang.Object temp = _data[index];
         _data[index] = o;
         return temp;
@@ -109,6 +115,9 @@ public void add( int index, java.lang.Object o )
 //shifts elements left to fill in newly-empted slot
 public java.lang.Object remove( int index )
 {
+        if (index < 0 || index >= size() ) {
+                throw new IndexOutOfBoundsException( "Element " + index + " is not in the array!");
+        }
         java.lang.Object removedVal = _data[index];
         for( int i = index; i < _size - 1; i++ ) {
                 _data[i] = _data[i+1];
@@ -153,6 +162,23 @@ public static void main( String[] args )
         }
 
         System.out.println("Printing populated SuperArray mayfield...");
+        System.out.println(mayfield);
+
+        System.out.println("\nTesting get...");
+        System.out.println("Item 0: " + mayfield.get(0) );
+        System.out.println("Item 4 : " + mayfield.get(4) );
+        //erronous cases
+        //System.out.println("Item -1 : " + mayfield.get(-1) );
+        //System.out.println("Item 99 : " + mayfield.get(99) );
+
+        System.out.println("\nTesting set...");
+        System.out.println("Swapping in String \"sadboi\" for: " + mayfield.set(0, "sadboi") );
+        System.out.println("Swapping String \"derreck\" for: " + mayfield.set(4, "derreck") );
+        // erronous vals
+        //System.out.println( mayfield.set(-1, "waht") );
+        //System.out.println( mayfield.set(99, "waht") );
+
+        System.out.println("Printing SuperArray mayfield after set...");
         System.out.println(mayfield);
 
         /*~~~~~~~~move~me~down~~~~~~~~~~~~~~V~~~~~~~~
