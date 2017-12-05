@@ -7,41 +7,30 @@ import java.util.ArrayList;
 
 public class ALTester {
 
-private int[] _data;
-
-// populate the arrya with random ints
-public ALTester(){
-        _data = new int [23];
-        // populate the array with random ints
-        for (int i = 0; i < _data.length; i++) {
-                _data[i] = (int) ( Math.random() * 100 );
+//populate with random ints 23 times
+public static void populate (ArrayList <Comparable> a){
+        for ( int i = 0; i < 23; i++ ) {
+                a.add(i*2);
+                //a.add( (int)(Math.random() * 100) );
         }
 }
 
-//output _data in [a,b,c] format
-public String toString()
-{
-        String foo = "[";
-        for( int i = 0; i < _size; i++ ) {
-                foo += _data[i] + ",";
+public static Boolean isSorted (ArrayList <Comparable> a){
+        for (int i = 0; i < a.size() - 1; i++) {
+                //Comparable val;
+                Comparable val = a.get(i);
+                Comparable valAfter = a.get(i+1);
+                if ( val.compareTo(valAfter) > 0 )
+                        return false;
         }
-        if ( foo.length() > 1 )
-                //shave off trailing comma
-                foo = foo.substring( 0, foo.length()-1 );
-        foo += "]";
-        return foo;
+        return true;
 }
 
-
-public static int max(int a, int b){ // Find the maximum of two INTEGERS
-// Pre-condition: take two integers a and b
-// Post-condition: return the larger integer
-        if (a > b) {
-                return a;
-        }
-        else{
-                return b;
-        }
+public static void main(String[] args) {
+        ArrayList<Comparable> foo = new ArrayList<Comparable>();
+        populate(foo);
+        System.out.println(foo);
+        System.out.println( isSorted(foo) );
 }
 
 }
