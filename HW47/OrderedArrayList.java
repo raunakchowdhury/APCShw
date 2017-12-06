@@ -73,7 +73,7 @@ public void add(Comparable newVal)
         // deal with indices that are outside of the array range
         // deal with the case of adding the very first element to the array
         _data.add(newVal);
-        //minOfArray();
+        sort();
 }
 
 // A helper method for returning the min of two Comparables.
@@ -134,7 +134,7 @@ public static void main( String[] args )
         //System.out.println( "Array after popping item 1: " + Franz );
         /* ============================*/
         //check for sorted-ness
-        Franz.sort();
+        //Franz.sort();
         //if msg does not appear, list was sorted
         for( int i=0; i<Franz.size()-1; i++ ) {
                 System.out.println("at i: " + Franz.get(i) );
