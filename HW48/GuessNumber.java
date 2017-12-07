@@ -46,27 +46,27 @@ public void playRec()
         System.out.print( _lo + "-" + _hi +": ");
         int guess = Keyboard.readInt();
 
-        if (guess == _target) //if the player guesses correctly
+        if (guess == _target) { //if the player guesses correctly
                 System.out.println("Correct! You got this number in " + _guessCtr + " guesses.");
+                return;
+        }
         //deal with invalid inputs that fall outside the given range
         else if(guess > _hi || guess < _lo) {
                 System.out.println("Invalid input!");
-                playRec();
         }
         // if the guess is more than the target
         else if (guess > _target) {
                 System.out.println("Your guess is too high! ");
                 _guessCtr++;
                 _hi = guess  - 1; //change the range to reflect the guess
-                playRec();
         }
         // if the guess is less than the target
         else {
                 System.out.println("Your guess is too low!");
                 _guessCtr++;
                 _lo = guess + 1; //change the range to reflect the guess
-                playRec();
         }
+        playRec();
 
         /* YOUR IMPLEMENTATION HERE */
 }
@@ -86,7 +86,7 @@ public void playIter()
                 System.out.print("Guess a number between ");
                 System.out.print( _lo + "-" + _hi +": ");
                 guess = Keyboard.readInt();
-                if (guess = _target) //deal with the exception when the range is equal to the target
+                if (guess == _target) //deal with the exception when the range is equal to the target
                         break;
                 if(guess > _hi || guess < _lo) {
                         System.out.println("Invalid input!");
@@ -113,8 +113,8 @@ public void playIter()
 public void play()
 {
         //use one or the other below:
-        //playRec();
-        playIter();
+        playRec();
+        //playIter();
 }
 
 
