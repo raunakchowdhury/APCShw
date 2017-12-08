@@ -79,11 +79,11 @@ public void addBin( Comparable val ){
         int midpoint = (lo + hi) / 2;
 
 // deal with the scenario where val is greater than the last element or less than the first element
-        if ( val.compareTo( _data.get(0) ) <= 0 ) {
+        if ( val.compareTo( get(0) ) <= 0 ) {
                 _data.add(0,val);
                 return; // if the val has been added, no need to run the rest of the code
         }
-        else if ( val.compareTo( _data.get(size()-1) )  >= 0) {
+        else if ( val.compareTo( get(size()-1) )  >= 0) {
                 _data.add(size(), val);
                 return; // see above comment
         }
@@ -91,18 +91,18 @@ public void addBin( Comparable val ){
         while (true) {
                 // look to see if val is sandwiched between the indices, based on midpoint.
                 // this accounts for the scenario where a second value is added which matches a number in the array.
-                if ( val.compareTo( _data.get(midpoint) ) <= 0 &&
-                     val.compareTo( _data.get(midpoint - 1) ) >= 0 ) {
+                if ( val.compareTo( get(midpoint) ) <= 0 &&
+                     val.compareTo( get(midpoint - 1) ) >= 0 ) {
                         _data.add(midpoint, val);
                         return;
                 }
 
                 // if the algorithm is searching too far to the left
-                else if (val.compareTo( _data.get(midpoint) ) > 0)
+                else if (val.compareTo( get(midpoint) ) > 0)
                         lo = midpoint; // shift the range to a smaller section to the right
 
                 // if the algorithm is searching too far to the right
-                else if ( val.compareTo( _data.get(midpoint-1) ) < 0)
+                else if ( val.compareTo( get(midpoint-1) ) < 0)
                         hi = midpoint; //shift the range to a smaller section to the left
 
                 midpoint = (lo + hi) / 2; //set the midpoint based on the new lo/hi
