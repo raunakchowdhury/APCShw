@@ -61,6 +61,8 @@ public static void insertionSortV( ArrayList<Comparable> data )
                                 //set the value that was vacated by i with the previous value
                                 data.set(i, previousVal);
                         }
+                        else
+                                break;
                 } //end pass
                 marker++; //advance the sorted region by one
         }
