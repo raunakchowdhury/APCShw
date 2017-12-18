@@ -53,7 +53,7 @@ private ArrayList <Integer> _frequency;
 //          _frequency.get(i) returns frequency of i in data
 //eg, for data [2,3,2,5,2,3]
 //  _frequency would be [0,0,3,2,0,1]
-public StatPrinter( ArrayList <Integer> data )
+public StatPrinter( ArrayList <Integer> data ) // O(n^2)
 {
         _frequency = new ArrayList <Integer>();
         int totalOccurences = 0;
@@ -61,11 +61,11 @@ public StatPrinter( ArrayList <Integer> data )
         for (int i = 0; i < data.size() - 1; i++) {
                 for (int x : data) {
                         if (x == i) {
-                                totalOccurences += 1;
+                                totalOccurences += 1; //add up the number of occurences in data
                         }
                 }
-                _frequency.add(totalOccurences);
-                totalOccurences = 0;
+                _frequency.add(totalOccurences); //append it to the end of the array
+                totalOccurences = 0; //reset for the next pass
         }
 }
 
@@ -84,7 +84,7 @@ public Integer max( ArrayList <Integer> data )
         int max = data.get(0);
         for ( int i = 1; i < data.size(); i++) {
                 if ( max < data.get(i) ) {
-                        max = data.get(i);
+                        max = data.get(i); //basic max function
                 }
         } //end loop
         return max;
@@ -118,12 +118,13 @@ public ArrayList<Integer> getLocalModes()
         ArrayList <Integer> mode = new ArrayList <Integer>();
         for (int i = 0; i < _frequency.size(); i++) {
                 if ( _frequency.get(i) >= _frequency.get(i-1) && _frequency.get(i) >= _frequency.get(i+1) ) {
-                        mode.add(i);
+                        mode.add(i); //check for the mode; if it is a mode, then append it
                 }
         }
         return mode;
 }
 
+// function for multiplying Strings, like in Python
 public String multiplyString(String str, int times){
         if (times == 0) {
                 return "";
@@ -140,7 +141,7 @@ public String multiplyString(String str, int times){
 public void printHistogram( int longestBar )
 {
         /* YOUR IMPLEMENTATION HERE */
-        String retStr = "";
+        String retStr = ""; //generates the histogram
         for (int i = 0; i < _frequency.size() - 1; i++) {
                 retStr += i + " : ";
                 retStr += multiplyString("*", _frequency.get(i) );
