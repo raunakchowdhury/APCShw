@@ -82,7 +82,7 @@ public Integer max( ArrayList <Integer> data )
 {
         /* YOUR IMPLEMENTATION HERE */
         int max = data.get(0);
-        for ( int i = 1; i < data.length(); i++) {
+        for ( int i = 1; i < data.size(); i++) {
                 if ( max < data.get(i) ) {
                         max = data.get(i);
                 }
@@ -104,7 +104,9 @@ public Integer max( ArrayList <Integer> data )
 public boolean isLocalMode( int i )
 {
         /* YOUR IMPLEMENTATION HERE */
-        return false;
+        return ( i > 0 && i < _frequency.size() - 1
+                 && _frequency.get( i - 1 ) < _frequency.get( i )
+                 && _frequency.get( i + 1 ) < _frequency.get( i ) );
 }
 
 
@@ -113,8 +115,23 @@ public boolean isLocalMode( int i )
 public ArrayList<Integer> getLocalModes()
 {
         /* YOUR IMPLEMENTATION HERE */
-        return _frequency;
+        ArrayList <Integer> mode = new ArrayList <Integer>();
+        for (int i = 0; i < _frequency.size(); i++) {
+                if ( _frequency.get(i) >= _frequency.get(i-1) && _frequency.get(i) >= _frequency.get(i+1) ) {
+                        mode.add(i);
+                }
+        }
+        return mode;
+}
 
+public String multiplyString(String str, int times){
+        if (times == 0) {
+                return "";
+        }
+        for (int i = 0; i < times; i++) {
+                str += str;
+        }
+        return str;
 }
 
 
@@ -123,7 +140,13 @@ public ArrayList<Integer> getLocalModes()
 public void printHistogram( int longestBar )
 {
         /* YOUR IMPLEMENTATION HERE */
-        System.out.println("jake is a dub");
+        String retStr = "";
+        for (int i = 0; i < _frequency.size() - 1; i++) {
+                retStr += i + " : ";
+                retStr += multiplyString("*", _frequency.get(i) );
+                retStr += "\n";
+        }
+        System.out.println(retStr);
 }
 
 }//end class StatPrinter

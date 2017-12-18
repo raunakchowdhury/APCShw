@@ -34,11 +34,11 @@ public static void main( String[] args )
 
         //System.out.println( sp1.get() );
 
-        /*
-           System.out.println( "sp1 testing... " );
-           sp1.max( al1 );
-           sp1.printHistogram( 50 );
-         */
+/*
+        System.out.println( "sp1 testing... " );
+        sp1.max( al1 );
+        sp1.printHistogram( 50 );
+ */
 
 
         //construct data [2,3,2,5,2,3]
