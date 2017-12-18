@@ -1,3 +1,8 @@
+//Raunak Chowdhury
+//APCS1 pd2
+//HW56 -- His Toe Grammar
+//2017-12-18
+
 /*====================================================================
    An AP-style question, for practice:
    Write the StatPrinter class below. The StatPrinter Object receives an
