@@ -63,7 +63,7 @@ public StatPrinter( ArrayList <Integer> data ) // O(n^2)
         _frequency = new ArrayList <Integer>();
         int totalOccurences = 0;
         /* YOUR IMPLEMENTATION HERE */
-        for (int i = 0; i < data.size() - 1; i++) {
+        for (int i = 0; i < data.size() && i <= max(data); i++) {
                 for (int x : data) {
                         if (x == i) {
                                 totalOccurences += 1; //add up the number of occurences in data
@@ -74,11 +74,11 @@ public StatPrinter( ArrayList <Integer> data ) // O(n^2)
         }
 }
 
-/* ===========FOR TESTING =========
-   public ArrayList <Integer> get(){
+/* ===========FOR TESTING =========*/
+public ArrayList <Integer> get(){
         return _frequency;
-   }
-   ================================== */
+}
+/*================================== */
 
 //*************** QUESTION 01 **************************
 //precond:  data.size() > 0
@@ -131,11 +131,13 @@ public ArrayList<Integer> getLocalModes()
 
 // function for multiplying Strings, like in Python
 public String multiplyString(String str, int times){
+        String baseStr = str; //preserve the original string
         if (times == 0) {
                 return "";
         }
         for (int i = 0; i < times; i++) {
-                str += str;
+                str += baseStr;
+                //System.out.println(str);
         }
         return str;
 }
@@ -146,11 +148,19 @@ public String multiplyString(String str, int times){
 public void printHistogram( int longestBar )
 {
         /* YOUR IMPLEMENTATION HERE */
+        // finds the fraction of the stars needed, and then multiplies it by the length
+        int numStars = (int) ( (float) _frequency.get(0) / max(_frequency) ) * longestBar;
+        //System.out.println(numStars);
         String retStr = ""; //generates the histogram
-        for (int i = 0; i < _frequency.size() - 1; i++) {
+        for (int i = 0; i < _frequency.size(); i++) {
                 retStr += i + " : ";
-                retStr += multiplyString("*", _frequency.get(i) );
+                retStr += multiplyString("*", numStars );
                 retStr += "\n";
+
+                //System.out.println((float) (_frequency.get(i)) / max(_frequency));
+                //System.out.println(i + ":" + numStars);
+                numStars = (int) ( (float) (_frequency.get(i)) / max(_frequency)  * longestBar);
+                //System.out.println(numStars);
         }
         System.out.println(retStr);
 }
