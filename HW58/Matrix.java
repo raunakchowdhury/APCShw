@@ -1,3 +1,8 @@
+//Raunak Chowdhury
+//APCS1 pd2
+//HW58 -- Make the Matrix Work For You
+//2017-12-20
+
 /***
  * class Matrix -- models a square matrix
  *
