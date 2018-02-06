@@ -1,0 +1,23 @@
+Raunak Chowdhury
+APCS2 pd2
+HW04 --  So Easy, Even a Caveturtle Can Do It
+2018-02-05
+
+Preconditions:
+- There is a Head Turtle named Tofer, who has the unsorted deck and a table
+- There is a pile on Tofer's table that will hold the the cards in descending order
+- Each turtle may only do one of these things:
+  - Each turtle may interact with the turtles adjacent to them.
+
+Process:
+  1. Tofer splits the deck of cards into two and gives each pile to the turtle at the top left-hand corner of the room and the turtle at the bottom right-hand corner of the room.
+  2. The turtle with the pile chooses one card from the pile of cards and hands the pile off to the adjacent turtle with no cards.
+  3. Repeat step 2 until all turtles have one card.
+  4. If you you were originally given a pile of one card, pass it back to the turtle that gave the pile to you.
+  5. If you were given a pile of cards, insert your card such that the card to the left of your card is smaller, and the right card is either equal or greater. Give the pile to the next turtle holding one card.
+  6. Repeat step 5 until the original turtles that were given the halves have the piles in their hands.
+  7. Return both halves to Tofer, who will hold a deck in each hand. Tofer will now follow the algorithm below:
+    i. If the first card in the left deck is less than the other, place that card down on the pile.
+    ii. If the first card in the right deck is less than the other, place that card down on the pile.
+    iii. If there is one card in either hand and zero cards in the other, place that card down on the pile.
+    iv. Repeat steps i-iii until you have no cards left in either deck.
