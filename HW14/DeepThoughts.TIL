@@ -1,0 +1,16 @@
+Raunak Chowdhury
+APCS2 pd2
+HW14 -- Probing the Depths...
+2018-03-06
+
+1. An open tour cannot always be found — the inability of the KnightTour algorithm to find a maze in a 4x4 is a counterexample.
+2. An closed tour cannot always be found — the inability of the KnightTour algorithm to find a maze in a 4x4 is a counterexample.
+3. The increase appears to be exponential — it becomes rapidly unfeasible on boards past 10x10.
+4. It may be possible to optimize via Warnsdorf's rule — if the knight can look two moves ahead and take the path that leads to the most possible paths, then you can find a possible path 85% of the time.
+
+
+Algo:
+1. Are you on the exit? If yes, you have found your way out
+2. Are you stuck in a wall or are outside the maze? If yes, return.
+3. Try moves in all of the cardinal directions.
+4. Repeat until you find the exit.
