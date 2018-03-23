@@ -1,3 +1,7 @@
+//Kachow-der -- Raunak Chowdhury and Kathleen Wong
+//APCS2 pd2
+//HW23 -- Give and Take
+//2018-03-22
 /*****************************************************
 * class LList
 * Implements a linked list of LLNodes, each containing String data
