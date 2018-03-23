@@ -102,6 +102,7 @@ public String remove(int i){
         deletedNode = first.getNext();
         first.setNext( deletedNode.getNext() ); //link the node before to the node after the "deleted" one
         return deletedNode.getCargo();
+        _size--;
 }
 
 public void add( int i, String s ){
@@ -120,6 +121,7 @@ public void add( int i, String s ){
                         first = first.getNext();
         LLNode newNode = new LLNode (s,first.getNext()); //link it to the formerly next element
         first.setNext(newNode); //link first to the added node
+        _size++;
 }
 
 
