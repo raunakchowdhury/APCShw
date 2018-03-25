@@ -1,3 +1,7 @@
+//Raunak Chowdhury
+//APCS2 pd2
+//HW24a -- On the DLL
+//2018-03-25
 /*****************************************************
 * class DLLNode
 * Implements a doubly-linked node,

@@ -1,7 +1,7 @@
-//Kachow-der -- Raunak Chowdhury and Kathleen Wong
+//Raunak Chowdhury
 //APCS2 pd2
-//HW23 -- Give and Take
-//2018-03-22
+//HW24b --  On the DLL
+//2018-03-24
 /*****************************************************
 * class LList
 * Implements a linked list of DLLNodes, each containing String data
