@@ -1,0 +1,13 @@
+Raunak Chowdhury
+APCS2 pd2
+HW41 -- A Tree Grows in 251  or BK
+2018-04-29
+
+Minimum required info: Either a pre- or post- order tree. You need to know the root.
+
+1. Start by cutting out the root node in the pre-order or post-order, and cutting the traversal in half.
+2. If the traversal is a pre-order, start from the end of the second half. If the traversal is post, start from the beginning of the first half.
+3. If the letter is the first one to be placed, place it down. This is a leaf. Check to see if it corresponds with the other traversal.
+4. If the letter is not the first one to be placed, add it either as a leaf or put it on the current level-1 level. Check correspondence.
+5. If the letter cannot be placed down in such a way that it corresponds with the other traversal, then the tree is impossible.
+6. Repeat steps 3-5 until you have either a working or impossible tree.
