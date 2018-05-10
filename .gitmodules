@@ -1,3 +1,6 @@
 [submodule "Queueties"]
 	path = Queueties
 	url = git@github.com:raunakchowdhury/Queueties.git
+[submodule "team-repos-APCS/Queueties"]
+	path = team-repos-APCS/Queueties
+	url = git@github.com:raunakchowdhury/Queueties.git
