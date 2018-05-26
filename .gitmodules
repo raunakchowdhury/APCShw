@@ -4,3 +4,9 @@
 [submodule "team-repos-APCS/Queueties"]
 	path = team-repos-APCS/Queueties
 	url = git@github.com:raunakchowdhury/Queueties.git
+[submodule "team-repos-APCS/chained_together"]
+	path = team-repos-APCS/chained_together
+	url = git@github.com:nadinejackson/chained_together.git
+[submodule "team-repos-APCS/rmrf"]
+	path = team-repos-APCS/rmrf
+	url = git@github.com:raunakchowdhury/rm-rf.git
